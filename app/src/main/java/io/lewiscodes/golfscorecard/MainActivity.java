@@ -2,13 +2,12 @@ package io.lewiscodes.golfscorecard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ListActivity;
 import android.os.Bundle;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.IntStream;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ListActivity {
+    private ListAdapter listAdapter;
     private HoleTracker[] holes;
     private static final int TOTAL_HOLES = 18;
 
@@ -21,5 +20,8 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0; i < TOTAL_HOLES; i++) {
             holes[i] = new HoleTracker(i + 1);
         }
+
+        listAdapter = new ListAdapter(this, holes);
+        setListAdapter(listAdapter);
     }
 }
