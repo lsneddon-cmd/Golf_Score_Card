@@ -13,8 +13,16 @@ public class HoleTracker {
         return "Hole " + String.valueOf(holeNumber);
     }
 
+    public int getHoleNumber() {
+        return holeNumber;
+    }
+
     public int getStrokes() {
         return strokes;
+    }
+
+    public void setStrokes(int strokes) {
+        this.strokes = strokes;
     }
 
     public void incrementStrokes() {

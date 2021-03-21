@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class ListAdapter extends BaseAdapter {
-
     private final Context context;
     private final HoleTracker[] holes;
 
