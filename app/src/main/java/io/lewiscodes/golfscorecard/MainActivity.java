@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 
 public class MainActivity extends ListActivity {
@@ -17,11 +18,22 @@ public class MainActivity extends ListActivity {
     private ListAdapter listAdapter;
     private HoleTracker[] holes;
     private static final int TOTAL_HOLES = 18;
+    private Button resetBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        resetBtn = findViewById(R.id.resetButton);
+        resetBtn.setOnClickListener((v) -> {
+            editor.clear();
+            editor.apply();
+            for (HoleTracker hole : holes) {
+                hole.setStrokes(0);
+            }
+            listAdapter.notifyDataSetChanged();
+        });
 
         sharedPreferences = getSharedPreferences(PREFS_FILE, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
